@@ -1,7 +1,7 @@
 ## KU Polls: Online Survey Questions 
 
 An application to conduct online polls and surveys based
-on the [Django Tutorial project][django-tutorial], with
+on the [Django Tutorial project](https://docs.google.com/document/d/1wfOcNPAhNnZ702mKd32uoSazEhja2lIAFSjxV3va5wU/edit#heading=h.ei2uwhrew9rm), with
 additional features.
 
 This app was created as part of the [Individual Software Process](
@@ -18,7 +18,7 @@ All project documents are in the [Project Wiki](../../wiki/Home).
 - [Vision Statement](../../wiki/Vision%20Statement)
 - [Requirements](../../wiki/Requirements)
 
-[django-tutorial]: TODO-write-the-django-tutorial-URL-here## KU Polls: Online Survey Questions 
+[django-tutorial](https://docs.google.com/document/d/1wfOcNPAhNnZ702mKd32uoSazEhja2lIAFSjxV3va5wU/edit#heading=h.ei2uwhrew9rm) KU Polls: Online Survey Questions 
 
 An application to conduct online polls and surveys based
 on the [Django Tutorial project][django-tutorial], with
@@ -37,5 +37,7 @@ All project documents are in the [Project Wiki](../../wiki/Home).
 
 - [Vision Statement](../../wiki/Vision%20Statement)
 - [Requirements](../../wiki/Requirements)
+- [Development Plan](../../wiki/Development-Plan)
+- [Iteration 1 Plan](../../wiki/Iteration-1-Plan)
 
-[django-tutorial]: TODO-write-the-django-tutorial-URL-here
+[django-tutorial](https://docs.google.com/document/d/1wfOcNPAhNnZ702mKd32uoSazEhja2lIAFSjxV3va5wU/edit#heading=h.ei2uwhrew9rm)

@@ -1,1 +1,2 @@
+# Packages required by this application
 Django
