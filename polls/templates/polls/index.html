@@ -2,12 +2,24 @@
 
 <link rel="stylesheet" href="{% static 'polls/style.css' %}">
 
+<br><br>
+<center>
+    <h1>KU POLLS</h1>
+</center>
+
 {% if latest_question_list %}
     <ul>
-    {% for question in latest_question_list %}
-        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
-        <a href="{% url 'polls:results' question.id %}">Results</a>
-    {% endfor %}
+        <center>
+        <table border="1" >
+            <tr> <center><th>Polls Question</th><th>Results</th></center></tr>
+            {% for question in latest_question_list %}
+            <tr valign="top">
+                <td><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></td>
+                    <td><a href="{% url 'polls:results' question.id %}">Results</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+        </center>
     </ul>
 {% else %}
     <p>No polls are available.</p>
