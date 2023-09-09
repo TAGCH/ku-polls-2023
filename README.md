@@ -1,4 +1,5 @@
-## KU Polls: Online Survey Questions 
+# KU Polls: Online Survey Questions 
+[![Unit Tests](https://github.com/TAGCH/ku-polls/actions/workflows/ku-polls.yml/badge.svg)](https://github.com/TAGCH/ku-polls/actions/workflows/ku-polls.yml)
 
 An application to conduct online polls and surveys based
 on the [Django Tutorial project](https://docs.google.com/document/d/1wfOcNPAhNnZ702mKd32uoSazEhja2lIAFSjxV3va5wU/edit#heading=h.ei2uwhrew9rm), with
@@ -9,7 +10,7 @@ https://cpske.github.io/ISP) course at Kasetsart University.
 
 ## Install and Run
 
-to be added.
+Any python IDE.
 
 ## Project Documents
 
