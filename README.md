@@ -9,7 +9,7 @@ https://cpske.github.io/ISP) course at Kasetsart University.
 
 ## Install and Run
 
-to be added.
+Any python IDE.
 
 ## Project Documents
 
