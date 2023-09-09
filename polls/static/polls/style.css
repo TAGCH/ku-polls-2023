@@ -5,3 +5,40 @@ li a {
 body {
     background: white url("images/background.png") no-repeat;
 }
+
+table {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-collapse: collapse;
+    width: 50%;
+    color: #333;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    text-align: left;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+} 
+
+button{
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 0.1px solid black;
+    width: 5%;
+    color: #333;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 14px;
+    text-align: left;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    cursor: pointer;
+}
+
+td, th {
+    padding: 5px
+}
