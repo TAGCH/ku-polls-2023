@@ -21,5 +21,6 @@ All project documents are in the [Project Wiki](../../wiki/Home).
 - [Development Plan](../../wiki/Development-Plan)
 - [Iteration 1 Plan](../../wiki/Iteration-1-Plan)
 - [Iteration 2 Plan](../../wiki/Iteration-2-Plan)
+- [Iteration 3 Plan](../../wiki/Iteration-3-Plan)
 
 Django: [django-tutorial](https://docs.google.com/document/d/1wfOcNPAhNnZ702mKd32uoSazEhja2lIAFSjxV3va5wU/edit#heading=h.ei2uwhrew9rm)
