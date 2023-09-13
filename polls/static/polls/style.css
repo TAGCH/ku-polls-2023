@@ -1,17 +1,67 @@
-li a {
-    color: rgb(9, 9, 9);
+.bar {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: rgba(255, 255, 255, 0.4);
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 10px;
+}
+
+.back {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 50;
+    background-color: rgba(255, 255, 255, 0.4);
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 10px;
+}
+
+li,a {
+    font-family: optima, sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: #5b5b5b;
+    text-decoration: none;
+    display: inline-block;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 10%;
+}
+
+.nav__link {
+    list-style: none;
+}
+
+.nav__link li {
+    display: inline-block;
+    padding: 0px 20px;
+}
+
+.nav__link li a {
+    transition: all 0.3 ease 0s;
+}
+
+.nav__link li a:hover {
+    color: aliceblue;
 }
 
 body {
     background: white url("images/background.png") no-repeat;
+    font-family: optima, sans-serif;
 }
 
-table {
+.table {
     background-color: rgba(255, 255, 255, 0.5);
     border-collapse: collapse;
     width: 50%;
     color: #333;
-    font-family: Arial, sans-serif;
+    font-family: optima, sans-serif;
     font-size: 18px;
     text-align: left;
     border-radius: 10px;
@@ -20,36 +70,45 @@ table {
     margin: auto;
     margin-top: 50px;
     margin-bottom: 50px;
+    transition: all 0.8s;
 } 
 
-.button{
+.table:hover{
+    transform: scale(1.05);
+}
+
+.btn{
     background-color: rgba(255, 255, 255, 0.5);
-    border: 0.01px solid black;
-    width: 70%;
+    border: 0.01px solid rgb(139, 137, 137);
     color: #333;
-    font-family: "Times New Roman", Times, serif;
+    font-family: optima, sans-serif;
     font-size: 14px;
     text-align: center;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    margin: auto;
-    margin-top: 50px;
-    margin-bottom: 50px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    padding: 0.8%;
     cursor: pointer;
-    padding: 7px 14px;
+    transition: all 0.4s;
+}
+
+.btn:hover{
+    transform: scale(1.1);
 }
 
 td, th {
     padding: 5px
-
-}
-
-a{
-    font-family: "Times New Roman", Times, serif;
 }
 
 legend{
     text-align: center;
     padding: 35px
 }
+
+.fs{
+    width: 15%;
+    height: 25%;
+    border: none;
+    text-align: left;
+}
+

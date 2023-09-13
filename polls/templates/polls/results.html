@@ -1,6 +1,8 @@
 {% load static %}
 
-<link rel="stylesheet" href="{% static 'polls/style.css' %}">
+<head>
+    <link rel="stylesheet" href="{% static 'polls/style.css' %}">
+</head>
 
 <br><br>
 <center>
@@ -9,7 +11,7 @@
 
 <body>
     <center>
-    <table border="1" >
+    <table class="table" border="1" >
         <tr> <center><th>Choice</th><th>Vote</th></center></tr>
         {% for choice in question.choice_set.all %}
         <tr valign="top">
@@ -18,6 +20,6 @@
         </tr>
         {% endfor %}
     </table>
-    <a class="button" href="{% url 'polls:index' %}">Back to List of Polls</a>
+    <a href="{% url 'polls:index' %}"><button class="btn">&laquo; Back to List of Polls</button></a>
     </center>
 </body>

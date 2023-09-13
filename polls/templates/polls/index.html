@@ -2,6 +2,11 @@
 
 <link rel="stylesheet" href="{% static 'polls/style.css' %}">
 
+{% if user.is_authenticated %}
+   Welcome back, {{ user.username }} 
+{% else %}
+   Please <a href="{% url 'login' %}?next={{request.path}}">Login</a>
+{% endif %}
 <br><br>
 <center>
     <h1>KU POLLS</h1>
@@ -10,7 +15,7 @@
 {% if latest_question_list %}
     <ul>
         <center>
-        <table border="1" >
+        <table class="table" border="1" >
             <tr> <center><th>Polls Question</th><th>Results</th></center></tr>
             {% for question in latest_question_list %}
             <tr valign="top">
