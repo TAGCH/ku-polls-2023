@@ -7,7 +7,6 @@ from django.utils import timezone
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 
@@ -23,7 +22,9 @@ class IndexView(generic.ListView):
         Return the last five published questions (not including those set to be
         published in the future).
         """
-        return Question.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')[:5]
+        now = timezone.now()
+        pub = '-pub_date'
+        return Question.objects.filter(pub_date__lte=now).order_by(pub)[:5]
 
 
 class DetailView(LoginRequiredMixin, generic.DetailView):
@@ -42,7 +43,8 @@ class DetailView(LoginRequiredMixin, generic.DetailView):
         try:
             question = get_object_or_404(Question, pk=kwargs['pk'])
         except Http404:
-            messages.error(request, "This question is not available for voting.")
+            messages.error(request,
+                           "This question is not available for voting.")
             return HttpResponseRedirect(reverse('polls:index'))
 
         try:
@@ -94,7 +96,8 @@ def vote(request, question_id):
         else:
             messages.error(request, "You can't vote this question.")
             return HttpResponseRedirect(reverse('polls:index'))
-        return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
+        return HttpResponseRedirect(reverse('polls:results',
+                                            args=(question.id,)))
 
 
 def signup(request):
