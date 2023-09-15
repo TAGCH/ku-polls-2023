@@ -31,5 +31,6 @@ All project documents are in the [Project Wiki](../../wiki/Home).
 - [Iteration 1 Plan](../../wiki/Iteration-1-Plan) and [Task Board](https://github.com/users/TAGCH/projects/2/views/1)
 - [Iteration 2 Plan](../../wiki/Iteration-2-Plan) and [Task Board](https://github.com/users/TAGCH/projects/2/views/4)
 - [Iteration 3 Plan](../../wiki/Iteration-3-Plan) and [Task Board](https://github.com/users/TAGCH/projects/2/views/7)
+- [Domain Model](../../wiki/Domain-Model)
 
 Django: [django-tutorial](https://docs.google.com/document/d/1wfOcNPAhNnZ702mKd32uoSazEhja2lIAFSjxV3va5wU/edit#heading=h.ei2uwhrew9rm)
