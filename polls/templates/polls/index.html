@@ -1,31 +1,231 @@
 {% load static %}
 
-<link rel="stylesheet" href="{% static 'polls/style.css' %}">
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="KU Polls">
+        <meta name="author" content="TAGCH">
+        <meta name="keyword" content="html css javascript">
+        <title>Polls List</title>
+        <link rel="stylesheet" href="{% static 'polls/style.css' %}">
 
-{% if user.is_authenticated %}
-   Welcome back, {{ user.username }} 
-{% else %}
-   Please <a href="{% url 'login' %}?next={{request.path}}">Login</a>
-{% endif %}
-<br><br>
-<center>
-    <h1>KU POLLS</h1>
-</center>
+    </head>
 
-{% if latest_question_list %}
-    <ul>
-        <center>
-        <table class="table" border="1" >
-            <tr> <center><th>Polls Question</th><th>Results</th></center></tr>
-            {% for question in latest_question_list %}
-            <tr valign="top">
-                <td><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></td>
-                    <td><a href="{% url 'polls:results' question.id %}">Results</a></td>
-            </tr>
-            {% endfor %}
-        </table>
-        </center>
-    </ul>
-{% else %}
-    <p>No polls are available.</p>
-{% endif %}
+    <!-- I do linked CSS but it very slow to update, so I put my style in this file-->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 16px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 30px rgb(0, 0, 0, 0.5);
+        }
+
+        .logo {
+            font-size: 2.2em;
+            color: azure;
+            user-select: none;
+            font-weight: 700;
+            text-shadow: 0px 0px 8px #00000057;
+        }
+
+        .title {
+            font-size: 2.8em;
+            user-select: none;
+            font-weight: 700;
+            text-shadow: 0px 0px 8px #00000057;
+        }
+
+        .navigation a {
+            font-size:  2.0em;
+            color: aliceblue;
+            text-decoration: none;
+            font-weight: 580;
+            margin-left: 40px;
+            position:relative;
+            text-shadow: 0px 0px 8px #00000057;
+        }
+
+        .navigation h4 {
+            position: relative;
+            font-size:  1.0em;
+            color: aliceblue;
+            text-decoration: none;
+            font-weight: 600;
+            margin-left: 40px;
+            text-shadow: 0px 0px 8px #00000057;
+        }
+
+        .navigation .btnLogin-popup {
+            width:  95px;
+            height: 45px;
+            background: transparent;
+            border: 1px solid #fff;
+            outline: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1.1em;
+            color: #fff;
+            font-weight: 900;
+            margin-left: 40px;
+            box-shadow: 0 0 30px rgb(0, 0, 0, 0.2);
+            transition: .5s;
+            text-shadow: 0px 0px 8px #00000057;
+        }
+
+        .navigation .btnLogin-popup:hover {
+            background: rgba(255, 255, 255, 0.5);
+            color: blueviolet;
+        }
+
+        .navigation a::after {
+            content: ' ';
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 100%;
+            height: 3px;
+            background: #fff;
+            border-radius: 5px;
+            transform: scaleX(0);
+            transition: transform .5s;
+        }
+
+        .navigation a:hover::after {
+            transform-origin: left;
+            transform: scaleX(1);
+        }
+
+        .table {
+            background-color: rgba(255, 255, 255, 0.5);
+            border-collapse: collapse;
+            width: 100%;
+            color: #333;
+            font-family: optima, sans-serif;
+            font-size: 26px;
+            text-align: left;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            margin: auto;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            transition: all 0.9s;
+        } 
+        
+        .table:hover{
+            transform: scale(1.04);
+        }
+
+        td, th {
+            padding: 10px
+        }
+
+        .btn {
+            background-color: rgba(255, 255, 255, 0.5);
+            color: #333;
+            font-family: optima, sans-serif;
+            font-size: 14px;
+            text-align: center;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+            padding: 5px 10px;
+            cursor: pointer;
+            transition: all 0.4s;
+            width: fit-content;
+        }
+        
+        .btn:hover {
+            transform: scale(1.1);
+        }
+
+        .question {
+            font-size: 20px;
+            transition: all 0.4s;
+        }
+
+        .question:hover {
+            transform: scale(1.02);
+        }
+
+        .result {
+            font-size: 20px;
+            transition: all 0.4s;
+        }
+
+        .result:hover {
+            tranform: scale(1.02);
+        }
+
+    </style>
+    <body>
+        <div>
+            <header>
+                <nav class="navigation">
+                    <a href={% url 'polls:index' %}>KU POLLS</a>
+                </nav>
+
+                <nav class="navigation">
+                    {% if user.is_authenticated %}
+                    <h4>Welcome back, {{ user.username }}
+                        <button class="btnLogin-popup" onclick="window.location.href='{% url 'logout' %}?next={{request.path}}'; Logout_Alert()">Logout</button>
+                    </h4>
+                    {% else %}
+                        <button class="btnLogin-popup" onclick="window.location.href='{% url 'login' %}?next={{request.path}}';">Login</button>
+                    {% endif %}
+                </nav>
+            </header>
+        </div>
+        <div>
+            <center>
+                <center>
+                    <h1 class="title">KU POLLS</h1>
+                </center>
+
+                {% if latest_question_list %}
+                    <ul>
+                        <center>
+                        <table class="table" border="1" >
+                            <tr> <center><th>Polls Question</th><th>Results</th></center></tr>
+                            {% for question in latest_question_list %}
+                            <tr valign="top">
+                                <td><a class="question" href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></td>
+                                <td><a class "result" href="{% url 'polls:results' question.id %}">Results</a></td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                        </center>
+                    </ul>
+                {% else %}
+                    <p>No polls are available.</p>
+                {% endif %}
+            </center>
+        </div>
+        <script>
+            function Logout_Alert() {
+              alert("Click 'OK' to logout!");
+            }
+        </script>
+    </body>
+</html>

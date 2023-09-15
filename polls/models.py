@@ -2,6 +2,7 @@ import datetime
 
 from django.db import models
 from django.utils import timezone
+from django.contrib import admin
 from django.contrib.auth.models import User
 
 
@@ -10,7 +11,7 @@ class Question(models.Model):
     Class for question
     """
     question_text = models.CharField(max_length=200)
-    pub_date = models.DateTimeField('date published', default=timezone.now())
+    pub_date = models.DateTimeField('date published', default=timezone.now)
     end_date = models.DateTimeField('date ended', null=True)
 
     def __str__(self):
@@ -19,6 +20,11 @@ class Question(models.Model):
         """
         return self.question_text
 
+    @admin.display(
+        boolean=True,
+        ordering='pub_date',
+        description='Published recently?',
+    )
     def was_published_recently(self):
         """
         Return True if self.pub_date represents a point in time within
@@ -68,6 +74,7 @@ class Vote(models.Model):
     """Record a choice for a question made by a user."""
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     choice = models.ForeignKey(Choice, on_delete=models.CASCADE)
+    question = models.ForeignKey(Question, on_delete=models.CASCADE, null=True)
 
     def __str__(self) -> str:
         return f"Vote for {self.choice.choice_text}"

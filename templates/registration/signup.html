@@ -1,17 +1,75 @@
 {% load static %}
 
-<head>
-    <link rel="stylesheet" href="{% static 'polls/style.css' %}">
-</head>
-<h2>Register</h2>
-<form method="POST">
-    {% csrf_token %}
-    <table style="padding: 2ex;">
-    {{ form.as_table }}     {# this line shows the sign-up form #}
-    <tr>
-    <td colspan="2">
-    <button type="submit">Register</button>
-    </td>
-    </tr>
-    </table>
-</form>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="KU Polls">
+        <meta name="author" content="TAGCH">
+        <meta name="keyword" content="html css javascript">
+        <title>Signup</title>
+        <link rel="stylesheet" href="{% static 'polls/style.css' %}">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    </head>
+
+    <!-- I do linked CSS but it very slow to update, so I put my style in this file-->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-size: cover;
+            background-position: center;
+        }
+
+        #Ex {
+            width: 50%;
+            height: 80%;
+            border-radius: 20px;
+            background: transparent;
+            backdrop-filter: blur(20px);
+            position: relative;
+            box-shadow: 0 0 30px rgb(0, 0, 0, .5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        table {
+            width: 100%;
+        }
+
+        table tr {
+            margin-bottom: 100px;
+        }
+
+    </style>
+
+    <body>  
+        <div id="Ex">
+            <center>
+                <h1>Register</h1>
+                <br>
+                <form method="POST">
+                    {% csrf_token %}
+                    <table>
+                        <td>{{ form.as_p }}</td>
+                    </table>
+                    <br>
+                    <button class="btn" type="submit">Register</button>
+                    <input type="hidden" name="next" value="{{next}}" />
+                </form>
+                Already have an account? <a href="{% url 'login' %}?next={% url 'polls:index' %}">Login</a>
+            </center>
+        </div>
+    </body>
+</html>

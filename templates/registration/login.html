@@ -1,20 +1,70 @@
-<html>
 {% load static %}
 
+<html>
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="KU Polls">
+        <meta name="author" content="TAGCH">
+        <meta name="keyword" content="html css javascript">
+        <title>Login</title>
         <link rel="stylesheet" href="{% static 'polls/style.css' %}">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     </head>
+
+    <!-- I do linked CSS but it very slow to update, so I put my style in this file-->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-size: cover;
+            background-position: center;
+        }
+
+        #Ex {
+            width: 400px;
+            height: 440px;
+            border-radius: 20px;
+            background: transparent;
+            backdrop-filter: blur(20px);
+            position: relative;
+            box-shadow: 0 0 30px rgb(0, 0, 0, .5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+    </style>
     
-    <body class="back">
-        <h2>Login</h2>
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <p>
-                <button type="submit">Login</button>
-            </p>
-            <input type="hidden" name="next" value="{{next}}"/>
-        </form>
-        {# If you have a sign-up page, then add a link here #}
+    <body>
+        <center>
+            <div id="Ex">
+                <center>
+                    <form method="post">
+                        <h1 font-family= "optima, sans-serif">Login</h1><br>
+                        {% csrf_token %}
+                            {{ form.as_p }}
+                        <p>
+                            <center>
+                                <br>
+                                <button class="btn" type="submit">Login</button>
+                            </center>
+                        </p>
+                        <input type="hidden" name="next" value="{{next}}"/>
+                    </form>
+                    <br>
+                    Doesn't have an account? <a href="{% url 'signup' %}">Signup</a><br>
+                </center>
+            <div>
+        </center>
     </body>
 </html>
