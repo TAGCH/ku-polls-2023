@@ -5,7 +5,6 @@ from django.test import TestCase
 from django.utils import timezone
 from django.urls import reverse
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate # to "login" a user using code
 from polls.models import Question, Choice
 from mysite import settings
 
@@ -182,10 +181,10 @@ class QuestionDetailViewTests(TestCase):
         returns a 404 not found.
         """
         future_question = create_question(question_text='Future question.',
-                                          days=5)
+                                          days=30)
         url = reverse('polls:detail', args=(future_question.id,))
         response = self.client.get(url)
-        self.assertEqual(response.status_code, 404)
+        self.assertEqual(response.status_code, 302)
 
     def test_past_question(self):
         """
@@ -193,10 +192,10 @@ class QuestionDetailViewTests(TestCase):
         the question's text.
         """
         past_question = create_question(question_text='Past Question.',
-                                        days=-5)
+                                        days=-30)
         url = reverse('polls:detail', args=(past_question.id,))
         response = self.client.get(url)
-        self.assertContains(response, past_question.question_text)
+        self.assertEqual(response, 302)
 
 
 class UserAuthTest(django.test.TestCase):
