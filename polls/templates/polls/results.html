@@ -167,6 +167,14 @@
         transform: scale(1.1);
     }
 
+    .subh {
+        font-size: 1.0em;
+        color: #00000075;
+        user-select: none;
+        font-weight: 550;
+        text-shadow: 0px 0px 1px #00000020;
+    }
+
 </style>
 <body>
     <div>
@@ -193,6 +201,12 @@
     <center>
         <center>
             <h1 font-family: 'Lexend Deca'>{{ question.question_text }}</h1>
+            {% for choice in question.choice_set.all %}
+                {% if choice == user_vote %}
+                    <br>
+                    <h3 class="subh">You vote: {{user_vote}}!</h3>
+                {% endif %}
+            {% endfor %}
         </center>
         <table class="table" border="1" >
             <tr> <center><th>Choice</th><th>Vote</th></center></tr>

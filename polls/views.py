@@ -66,6 +66,29 @@ class ResultsView(generic.DetailView):
     model = Question
     template_name = 'polls/results.html'
 
+    def get(self, request, *args, **kwargs):
+        user = request.user
+        try:
+            question = self.get_object()
+        except Http404:
+            messages.error(request, "This question is not available for voting.")
+            return HttpResponseRedirect(reverse('polls:index'))
+
+        try:
+            if not user.is_authenticated:
+                raise Vote.DoesNotExist
+            user_vote = question.vote_set.get(user=user).choice
+        except Vote.DoesNotExist:
+            # If user didn't select a choice or invalid choice,
+            # it will render as didn't select a choice
+            return super().get(request, *args, **kwargs)
+
+        # Continue with your logic for rendering the results
+        return render(request, self.template_name, {
+            'question': question,
+            'user_vote': user_vote,
+        })
+
 
 @login_required
 def vote(request, question_id):
