@@ -178,7 +178,7 @@ class QuestionDetailViewTests(TestCase):
     def test_future_question(self):
         """
         The detail view of a question with a pub_date in the future
-        returns a 404 not found.
+        returns a 302 not found.
         """
         future_question = create_question(question_text='Future question.',
                                           days=30)
@@ -188,14 +188,14 @@ class QuestionDetailViewTests(TestCase):
 
     def test_past_question(self):
         """
-        The detail view of a question with a pub_date in the past displays
-        the question's text.
+        The detail view of a question with a pub_date in the future
+        returns a 302 not found.
         """
         past_question = create_question(question_text='Past Question.',
-                                        days=-30)
+                                        days=-5)
         url = reverse('polls:detail', args=(past_question.id,))
         response = self.client.get(url)
-        self.assertEqual(response, 302)
+        self.assertEqual(response.status_code, 302)
 
 
 class UserAuthTest(django.test.TestCase):
