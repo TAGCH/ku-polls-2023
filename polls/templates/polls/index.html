@@ -12,6 +12,7 @@
 
     </head>
 
+    <!-- I do linked CSS but it very slow to update, so I put my style in this file-->
     <style>
         * {
             margin: 0;
@@ -121,7 +122,7 @@
             width: 100%;
             color: #333;
             font-family: optima, sans-serif;
-            font-size: 18px;
+            font-size: 26px;
             text-align: left;
             border-radius: 10px;
             overflow: hidden;
@@ -129,15 +130,52 @@
             margin: auto;
             margin-top: 50px;
             margin-bottom: 50px;
-            transition: all 0.8s;
+            transition: all 0.9s;
         } 
         
         .table:hover{
-            transform: scale(1.05);
+            transform: scale(1.04);
         }
 
         td, th {
             padding: 10px
+        }
+
+        .btn {
+            background-color: rgba(255, 255, 255, 0.5);
+            color: #333;
+            font-family: optima, sans-serif;
+            font-size: 14px;
+            text-align: center;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+            padding: 5px 10px;
+            cursor: pointer;
+            transition: all 0.4s;
+            width: fit-content;
+        }
+        
+        .btn:hover {
+            transform: scale(1.1);
+        }
+
+        .question {
+            font-size: 20px;
+            transition: all 0.4s;
+        }
+
+        .question:hover {
+            transform: scale(1.02);
+        }
+
+        .result {
+            font-size: 20px;
+            transition: all 0.4s;
+        }
+
+        .result:hover {
+            tranform: scale(1.02);
         }
 
     </style>
@@ -172,8 +210,8 @@
                             <tr> <center><th>Polls Question</th><th>Results</th></center></tr>
                             {% for question in latest_question_list %}
                             <tr valign="top">
-                                <td><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></td>
-                                    <td><a href="{% url 'polls:results' question.id %}">Results</a></td>
+                                <td><a class="question" href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></td>
+                                <td><a class "result" href="{% url 'polls:results' question.id %}">Results</a></td>
                             </tr>
                             {% endfor %}
                         </table>

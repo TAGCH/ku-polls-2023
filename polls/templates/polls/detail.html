@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="{% static 'polls/style.css' %}">
     </head>
 
+    <!-- I do linked CSS but it very slow to update, so I put my style in this file-->
     <style>
         * {
             margin: 0;
@@ -52,15 +53,13 @@
         }
 
         .navigation a {
-            font-size:  1.1em;
+            font-size:  2.0em;
             color: aliceblue;
             text-decoration: none;
             font-weight: 580;
             margin-left: 40px;
             position:relative;
             text-shadow: 0px 0px 8px #00000057;
-            top: 7px;
-            right: 320px;
         }
 
         .navigation h4 {
@@ -126,6 +125,30 @@
             background-color: rgba(255, 255, 255, 0.2);
         }
 
+        .btn {
+            background-color: rgba(255, 255, 255, 0.5);
+            color: #333;
+            font-family: optima, sans-serif;
+            font-size: 14px;
+            text-align: center;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+            padding: 5px 10px;
+            cursor: pointer;
+            transition: all 0.4s;
+            width: fit-content;
+            border: 0.01px solid rgb(139, 137, 137, .5);
+        }
+        
+        .btn:hover {
+            transform: scale(1.1);
+        }
+
+        hr.new1 {
+            border-top: 1px solid rgba(55, 55, 55, 0.173);
+        }
+
     </style>
     <body>
         <div>
@@ -151,26 +174,34 @@
                 <form action="{% url 'polls:vote' question.id %}" method="post">
                     {% csrf_token %}
                     <legend><h1>{{ question.question_text }}</h1></legend>
-                    
                         {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-                        {% for choice in question.choice_set.all %}
-                            <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
-                            <label style="font-size:26px;" for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
-                        {% endfor %}
+                        <div>
+                            {% for choice in question.choice_set.all %}
+                                <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+                                <label style="font-size:26px;" for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+                            {% endfor %}
+                        </div>
                         <br>
-                        <input type="submit" value="Vote" class="btn">
+                        <button type="submit" value="Vote" class="btn" onclick="Submit_Alert({{ question.question_text }})">Vote</button>
                 </form>
             </div>
-            <br><br>
+            <br><br><br><hr class="new1"><br>
             <div>
                 <a href="{% url 'polls:results' question.id %}"><button class="btn">Results &raquo;</button></a><br><br>
                 <a href="{% url 'polls:index' %}"><button class="btn">&laquo; Back to List of Polls</button></a>
             </div>
         </center>
+        <div id="toastBox"></div>
         <script>
             function Logout_Alert() {
-            alert("Click 'OK' to logout!");
+                alert("Click 'OK' to logout!");
             }
+        </script>
+        <script>
+            function Submit_Alert() {
+                var questionText = "Your question text here";
+                alert("Successful vote for " + questionText);
+                }
         </script>
 
     </body>

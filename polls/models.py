@@ -2,6 +2,7 @@ import datetime
 
 from django.db import models
 from django.utils import timezone
+from django.contrib import admin
 from django.contrib.auth.models import User
 
 
@@ -19,6 +20,11 @@ class Question(models.Model):
         """
         return self.question_text
 
+    @admin.display(
+        boolean=True,
+        ordering='pub_date',
+        description='Published recently?',
+    )
     def was_published_recently(self):
         """
         Return True if self.pub_date represents a point in time within

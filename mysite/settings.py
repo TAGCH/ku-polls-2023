@@ -109,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Where to redirect visitor after login or logout
 LOGIN_REDIRECT_URL = 'polls:index'  # after login, show list of polls
-LOGOUT_REDIRECT_URL = '?'  # after logout, direct to login
+LOGOUT_REDIRECT_URL = 'login'  # after logout, direct to login
 
 
 # Internationalization

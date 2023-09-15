@@ -78,7 +78,6 @@ header {
 
 .btn {
     background-color: rgba(255, 255, 255, 0.5);
-    border: 0.01px solid rgb(139, 137, 137);
     color: #333;
     font-family: optima, sans-serif;
     font-size: 14px;
@@ -86,7 +85,7 @@ header {
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-    padding: 0px 10px;
+    padding: 5px 10px;
     cursor: pointer;
     transition: all 0.4s;
     width: fit-content;
