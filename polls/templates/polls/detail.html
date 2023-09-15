@@ -149,6 +149,10 @@
             border-top: 1px solid rgba(55, 55, 55, 0.173);
         }
 
+        .radio {
+            transform: scale(2);
+        }
+
     </style>
     <body>
         <div>
@@ -174,13 +178,17 @@
                 <form action="{% url 'polls:vote' question.id %}" method="post">
                     {% csrf_token %}
                     <legend><h1>{{ question.question_text }}</h1></legend>
-                        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-                        <div>
+                        {% if error_message %}
+                            <p><strong>{{ error_message }}</strong></p>
+                        {% endif %}
                             {% for choice in question.choice_set.all %}
-                                <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
-                                <label style="font-size:26px;" for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+                                {% if choice == user_vote %}
+                                    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" class="radio" checked>
+                                {% else %}
+                                    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" class="radio">
+                                {% endif %}
+                                    <label style="font-size:26px;" for="choice{{ forloop.counter }}">&nbsp;{{ choice.choice_text }}</label><br>
                             {% endfor %}
-                        </div>
                         <br>
                         <button type="submit" value="Vote" class="btn" onclick="Submit_Alert('{{ question.question_text }}')">Vote</button>
                 </form>

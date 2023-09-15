@@ -74,6 +74,7 @@ class Vote(models.Model):
     """Record a choice for a question made by a user."""
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     choice = models.ForeignKey(Choice, on_delete=models.CASCADE)
+    question = models.ForeignKey(Question, on_delete=models.CASCADE, null=True)
 
     def __str__(self) -> str:
         return f"Vote for {self.choice.choice_text}"
