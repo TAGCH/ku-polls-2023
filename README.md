@@ -17,6 +17,9 @@ Any python IDE.
 |-----------|-----------------|
 |   TestSignUp06   | lnwza006 |
 |   TestSignUp07   | lnwza007 |
+|   TestSignUp08   | lnwza008 |
+|   TestSignUp09   | lnwza009 |
+|   TestSignUp10   | lnwza010 |
 
 ## Project Documents
 
