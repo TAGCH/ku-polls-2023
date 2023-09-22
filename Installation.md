@@ -19,8 +19,13 @@ python -m venv env
 
 - Change to your newly created virtual environment.
 
+For Mac and Linux.
 ```
-. env/bin/activate
+source env/bin/activate
+```
+For Window.
+```
+env\Scripts\activate.bat
 ```
 
 - Install packages from requirements.txt
@@ -29,7 +34,12 @@ python -m venv env
 pip install -r requirements.txt
 ```
 
-## 3. Run migration
+## 3. Set values for externalized variables
+- Create file `.env` to configuration and get the secret key [Secret Key](https://djecrety.ir)
+
+- Copy code from [sample.env](sample.env) and paste it in `.env`
+
+## 4. Run migration
 
 - Run migration.
 
@@ -37,7 +47,7 @@ pip install -r requirements.txt
 python manage.py migrate
 ```
 
-## 4. Run tests
+## 5. Run tests
 
 - Checking all tests.
 
@@ -45,22 +55,16 @@ python manage.py migrate
 python manage.py test
 ```
 
-## 5. Install data from the data fixtures
-
-- Load questions and choice version 1.
-
-```
-python manage.py loaddata data/polls-v1.json
-```
-
-- Load questions and choice continue version.
-
-```
-python manage.py loaddata data/polls.json
-```
+## 6. Install data from the data fixtures
 
 - Load users data.
 
 ```
 python manage.py loaddata data/users.json
+```
+
+- Load questions and choice.
+
+```
+python manage.py loaddata data/polls.json
 ```
