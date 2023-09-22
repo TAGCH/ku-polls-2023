@@ -43,4 +43,4 @@ All project documents are in the [Project Wiki](../../wiki/Home).
 - [Iteration 4 Plan](../../wiki/Iteration-3-Plan) and [Task Board](https://github.com/users/TAGCH/projects/2/views/8)
 - [Domain Model](../../wiki/Domain-Model)
 
-Django: [django-tutorial](https://docs.google.com/document/d/1wfOcNPAhNnZ702mKd32uoSazEhja2lIAFSjxV3va5wU/edit#heading=h.ei2uwhrew9rm)
+Django: [django-tutorial](https://docs.djangoproject.com/en/4.2/)
