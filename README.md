@@ -10,7 +10,16 @@ https://cpske.github.io/ISP) course at Kasetsart University.
 
 ## Install and Run
 
-Any python IDE.
+1. Installation : follow the step in [Installation](https://github.com/TAGCH/ku-polls/blob/iteration4/Installation.md) 
+2. Running : run by typing this code in your terminal, cmd or powershell.
+```
+python manage.py runserver
+```
+
+## Demo Admin
+| Username  | Password        | Email |
+|-----------|-----------------|-------|
+|   TestAdmin   | Testlnw007 | Test@admin.com |
 
 ## Demo Users
 | Username  | Password        |
@@ -31,6 +40,7 @@ All project documents are in the [Project Wiki](../../wiki/Home).
 - [Iteration 1 Plan](../../wiki/Iteration-1-Plan) and [Task Board](https://github.com/users/TAGCH/projects/2/views/1)
 - [Iteration 2 Plan](../../wiki/Iteration-2-Plan) and [Task Board](https://github.com/users/TAGCH/projects/2/views/4)
 - [Iteration 3 Plan](../../wiki/Iteration-3-Plan) and [Task Board](https://github.com/users/TAGCH/projects/2/views/7)
+- [Iteration 4 Plan](../../wiki/Iteration-3-Plan) and [Task Board](https://github.com/users/TAGCH/projects/2/views/8)
 - [Domain Model](../../wiki/Domain-Model)
 
 Django: [django-tutorial](https://docs.google.com/document/d/1wfOcNPAhNnZ702mKd32uoSazEhja2lIAFSjxV3va5wU/edit#heading=h.ei2uwhrew9rm)
