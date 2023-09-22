@@ -24,7 +24,7 @@ class IndexView(generic.ListView):
         """
         now = timezone.now()
         pub = '-pub_date'
-        return Question.objects.filter(pub_date__lte=now).order_by(pub)[:5]
+        return Question.objects.filter(pub_date__lte=now).order_by(pub)
 
 
 class DetailView(LoginRequiredMixin, generic.DetailView):
