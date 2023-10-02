@@ -190,7 +190,7 @@
                                     <label style="font-size:26px;" for="choice{{ forloop.counter }}">&nbsp;{{ choice.choice_text }}</label><br>
                             {% endfor %}
                         <br>
-                        <button type="submit" value="Vote" class="btn" onclick="Submit_Alert('{{ question.question_text }}')">Vote</button>
+                        <button type="submit" value="Vote" class="btn">Vote</button>
                 </form>
             </div>
             <br><br><br><hr class="new1"><br>
@@ -203,11 +203,6 @@
         <script>
             function Logout_Alert() {
                 alert("Click 'OK' to logout!");
-            }
-        </script>
-        <script>
-            function Submit_Alert(questionText) {
-                alert("Successful vote for: " + questionText);
             }
         </script>
 

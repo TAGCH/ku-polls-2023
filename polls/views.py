@@ -19,7 +19,7 @@ class IndexView(generic.ListView):
 
     def get_queryset(self):
         """
-        Return the last five published questions (not including those set to be
+        Return the all publish question. (not including those set to be
         published in the future).
         """
         now = timezone.now()
@@ -71,7 +71,8 @@ class ResultsView(generic.DetailView):
         try:
             question = self.get_object()
         except Http404:
-            messages.error(request, "This question is not available for voting.")
+            messages.error(request,
+                           "This question is not available for voting.")
             return HttpResponseRedirect(reverse('polls:index'))
 
         try:
